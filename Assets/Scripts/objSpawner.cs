@@ -11,62 +11,42 @@ public class objSpawner : MonoBehaviour
 
     void SpawnObject()
     {
-        GameObject newObject = Instantiate(objectToSpawn, transform.position, objectToSpawn.transform.rotation);
+        GameObject newObject = Instantiate(objectToSpawn, transform.position, objectToSpawn.transform.rotation) as GameObject;
+        if (Input.GetKeyDown("left"))
+        {
+            Destroy(newObject);
+        }
     }
 
 
     void deleteObject()
     {
-        //instantiatedObj = (GameObject)Instantiate(objectToSpawn, transform.position, objectToSpawn.transform.rotation);
-        //Destroy(instantiatedObj);
+        GameObject destroy = GameObject.Find("Cube(Clone)");
+        Destroy(destroy);
     }
 
     // Start is called before the first frame update
     void Start()
     {
        // InvokeRepeating("SpawnObject", 0, 0.5f); //zrobic tak zeby zrespilo sie 5 i potem przestalo respic
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        //drugi sposób
-         //if (currentTimeToSpawn > 0)
-         //{
-         //
-         //   currentTimeToSpawn -= Time.deltaTime;
-         //}
-         //else
-         //{
-         //   CancelInvoke();
-         //   currentTimeToSpawn = timeToSpawn;
-         //}
-
         // 1 sposob na przestanie respienia sie objektow w nieskonczonosc
         //if (Input.GetKey(KeyCode.Return)) 
         //{
         //    CancelInvoke();
         //}
-        
-        //TODO!!
-        //ALBO MOZNA TO TAK ZROBIC ZE JAK SIE ZRESPI TYCH BLOKOW DO KONKRETNEJ WYSOKOSCI TO WYKRYWA TO KOD I PRZESTAJE RESPIC
-
-      if (Input.GetKeyDown("right"))
-        {
-            SpawnObject();
-        }   
-      else if (Input.GetKeyDown("left"))
+        if (Input.GetKeyDown("right")||Input.GetKeyDown("left"))
         {
             SpawnObject();
         }
-       if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
        {
-            // if (gameObject.name == "Cube(clone)")
-            // {
-            //     Destroy(gameObject);
-            // }
-            //Destroy(instantiatedObj);
             deleteObject();
        }
     }
