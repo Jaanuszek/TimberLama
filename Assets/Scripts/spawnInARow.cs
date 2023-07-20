@@ -11,7 +11,7 @@ public class spawnInARow : MonoBehaviour
     void Start()
     {
         Vector3  position = firstPosition;
-        for (int i = 0; i<5; i++)
+        for (int i = 0; i<4; i++)
         {
             Instantiate(objectToCreate, position, Quaternion.identity);
             position.y += gap;

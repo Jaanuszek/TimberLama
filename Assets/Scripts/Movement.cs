@@ -9,8 +9,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // Vector3 lewy = new Vector3(-2f, 0, 0);
-        //Vector3 prawy = new Vector3(2f, 0, 0);
+        
     }
 
     // Update is called once per frame
@@ -18,13 +17,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKeyDown("left"))
         {
-           // print("lewy");
             transform.position = new Vector3(-2f,0.5f,0);
         }
 
         if (Input.GetKeyDown("right"))
         {
-            //print("prawy");
             transform.position = new Vector3(2f, 0.5f, 0);
         }
 
@@ -36,4 +33,5 @@ public class Movement : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    
 }
