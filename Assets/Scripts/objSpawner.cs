@@ -6,14 +6,11 @@ using UnityEngine;
 public class objSpawner : MonoBehaviour
 {
     public GameObject objectToSpawn;
-    public float timeToSpawn;
-    private float currentTimeToSpawn;
-    public GameObject instantiatedObj;
 
     void SpawnObject()
     {
         GameObject newObject = Instantiate(objectToSpawn, transform.position, objectToSpawn.transform.rotation);
-        newObject.transform.parent = transform;
+        //newObject.transform.parent = transform;
     }
 
 
