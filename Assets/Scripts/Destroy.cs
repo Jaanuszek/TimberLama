@@ -13,9 +13,10 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
-        {
-            Destroy(gameObject);
-        }
+      
+    }
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
     }
 }
