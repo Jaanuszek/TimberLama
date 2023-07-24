@@ -5,11 +5,14 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Vector2 pozycja;
+    //private GameObject leftObj;
+    //private GameObject rightObj;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //leftObj = GameObject.Find("Left");
+        //rightObj = GameObject.Find("Right");
     }
 
     // Update is called once per frame
@@ -26,12 +29,23 @@ public class Movement : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Respawn"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
-    
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Respawn"))
+    //    {
+    //        Destroy(other.gameObject);
+    //    }
+    //}
+   // private void OnTriggerEnter2D(Collider2D other)
+   // {
+   //     if (Input.GetKeyDown("left"))
+   //     {
+   //         Destroy(other.gameObject);
+   //     }
+   //     if (Input.GetKeyDown("right"))
+   //     {
+   //         Destroy(rightObj);
+   //     }
+   // }
+
 }

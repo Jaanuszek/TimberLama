@@ -5,13 +5,20 @@ using UnityEngine;
 
 public class objSpawner : MonoBehaviour
 {
-    public GameObject objectToSpawn;
+    public GameObject[] objectToSpawn;
 
     void SpawnObject()
     {
-        GameObject newObject = Instantiate(objectToSpawn, transform.position, objectToSpawn.transform.rotation);
+        int randomNumber = Random.Range(0,objectToSpawn.Length);
+        GameObject newObject = Instantiate(objectToSpawn[randomNumber], transform.position, objectToSpawn[randomNumber].transform.rotation);
         //newObject.transform.parent = transform;
     }
+
+    //void SpawnObject2()
+    //{
+    //    GameObject newObject = Instantiate(objectToSpawn2, transform.position, objectToSpawn2.transform.rotation);
+    //    //newObject.transform.parent = transform;
+    //}
 
 
     void deleteObject()
