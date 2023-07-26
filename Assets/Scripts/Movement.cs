@@ -7,8 +7,11 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     private Vector2 pozycja;
-    bool kierunek;
+    bool kierunek = false;
     public int Health;
+    private int score = 0;
+    public GameOverScript GameOverScreen;
+    private bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +33,18 @@ public class Movement : MonoBehaviour
             transform.position = new Vector3(2f, 0.5f, 0);
             kierunek = false;
         }
-        if (Health == 0)
+        if (Health <=0  && !isDead)
         {
-            SceneManager.LoadScene("SampleScene");
+            isDead = true;
+            GameOverScreen.gameOver(score);
+            //SceneManager.LoadScene("SampleScene");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("left") && kierunek == true)
         {
+            score += 1;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("left") && kierunek == false)
@@ -48,6 +54,7 @@ public class Movement : MonoBehaviour
         }
         if (other.gameObject.CompareTag("right") && kierunek == false)
         {
+            score += 1;
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("right")&& kierunek == true)
@@ -55,5 +62,9 @@ public class Movement : MonoBehaviour
             Debug.Log("GameOver");
             Health -= 1;
         }
+    }
+    public void GameOver()
+    {
+
     }
 }

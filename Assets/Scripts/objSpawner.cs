@@ -14,20 +14,6 @@ public class objSpawner : MonoBehaviour
         //newObject.transform.parent = transform;
     }
 
-    //void SpawnObject2()
-    //{
-    //    GameObject newObject = Instantiate(objectToSpawn2, transform.position, objectToSpawn2.transform.rotation);
-    //    //newObject.transform.parent = transform;
-    //}
-
-
-    void deleteObject()
-    {
-        GameObject destroy = GameObject.Find("Cube(Clone)");
-        Destroy(destroy);
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +27,5 @@ public class objSpawner : MonoBehaviour
         {
             SpawnObject();
         }
-        if (Input.GetKey(KeyCode.D))
-       {
-            //deleteObject();
-            GameObject.Destroy(gameObject);
-       }
     }
 }
