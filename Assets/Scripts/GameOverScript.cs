@@ -9,15 +9,22 @@ public class GameOverScript : MonoBehaviour
 {
     public GameObject gameOverUI;
     public TMP_Text pointsText;
+    public TMP_Text ScoreText;
     // Start is called before the first frame update
 
-    public void gameOver(int score)
+    public void GameOver(int score)
     {
         gameOverUI.SetActive(true);
         pointsText.text = score.ToString() + " Points";
+        Time.timeScale = 0f;
     }
     public void RestartButton()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+    public void Score(int score)
+    {
+        ScoreText.gameObject.SetActive(true);
+        ScoreText.text = "Points : " + score.ToString();
     }
 }

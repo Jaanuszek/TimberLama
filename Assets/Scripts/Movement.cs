@@ -16,7 +16,8 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
+        score += 1;
+        GameOverScreen.Score(score);
     }
 
     // Update is called once per frame
@@ -26,18 +27,20 @@ public class Movement : MonoBehaviour
         {
             transform.position = new Vector3(-2f,0.5f,0);
             kierunek = true;
+            GameOverScreen.Score(score);
         }
 
         if (Input.GetKeyDown("right"))
         {
             transform.position = new Vector3(2f, 0.5f, 0);
             kierunek = false;
+            GameOverScreen.Score(score);
         }
         if (Health <=0  && !isDead)
         {
             isDead = true;
-            GameOverScreen.gameOver(score);
-            //SceneManager.LoadScene("SampleScene");
+            GameOverScreen.ScoreText.gameObject.SetActive(false);
+            GameOverScreen.GameOver(score);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,9 +65,5 @@ public class Movement : MonoBehaviour
             Debug.Log("GameOver");
             Health -= 1;
         }
-    }
-    public void GameOver()
-    {
-
     }
 }
