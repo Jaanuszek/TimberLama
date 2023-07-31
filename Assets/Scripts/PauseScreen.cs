@@ -40,5 +40,6 @@ public class PauseScreen : MonoBehaviour
     public void Exit()
     {
         SceneManager.LoadScene("MainMenu");
+        isPaused = false;
     }
 }
