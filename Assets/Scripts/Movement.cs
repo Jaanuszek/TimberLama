@@ -12,8 +12,8 @@ public class Movement : MonoBehaviour
     private int score = 0;
     public GameOverScript GameOverScreen;
     private bool isDead;
+    public GameManager GameManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         score += 1;
@@ -23,25 +23,29 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("left"))
+        if (PauseScreen.isPaused == false)
         {
-            transform.position = new Vector3(-2f,0.5f,0);
-            kierunek = true;
-            GameOverScreen.Score(score);
-        }
+            if (Input.GetKeyDown("left"))
+            {
+                transform.position = new Vector3(-2f, 0.5f, 0);
+                kierunek = true;
+                GameOverScreen.Score(score);
+            }
 
-        if (Input.GetKeyDown("right"))
-        {
-            transform.position = new Vector3(2f, 0.5f, 0);
-            kierunek = false;
-            GameOverScreen.Score(score);
+            if (Input.GetKeyDown("right"))
+            {
+                transform.position = new Vector3(2f, 0.5f, 0);
+                kierunek = false;
+                GameOverScreen.Score(score);
+            }
+            if (Health <= 0 && !isDead || GameManager.currentHealth <= 0f)
+            {
+                isDead = true;
+                GameOverScreen.ScoreText.gameObject.SetActive(false);
+                GameOverScreen.GameOver(score);
+            }
         }
-        if (Health <=0  && !isDead)
-        {
-            isDead = true;
-            GameOverScreen.ScoreText.gameObject.SetActive(false);
-            GameOverScreen.GameOver(score);
-        }
+    
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -49,6 +53,10 @@ public class Movement : MonoBehaviour
         {
             score += 1;
             Destroy(other.gameObject);
+            if (GameManager.currentHealth < 1f)
+            {
+                GameManager.currentHealth += 0.1f;
+            }
         }
         else if (other.gameObject.CompareTag("left") && kierunek == false)
         {
@@ -59,6 +67,10 @@ public class Movement : MonoBehaviour
         {
             score += 1;
             Destroy(other.gameObject);
+            if(GameManager.currentHealth < 1f)
+            {
+                GameManager.currentHealth += 0.1f;
+            }
         }
         else if (other.gameObject.CompareTag("right")&& kierunek == true)
         {

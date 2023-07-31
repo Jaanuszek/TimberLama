@@ -17,10 +17,12 @@ public class GameOverScript : MonoBehaviour
         gameOverUI.SetActive(true);
         pointsText.text = score.ToString() + " Points";
         Time.timeScale = 0f;
+        PauseScreen.isPaused = true;
     }
     public void RestartButton()
     {
         SceneManager.LoadScene("SampleScene");
+        PauseScreen.isPaused = false;
     }
     public void Score(int score)
     {

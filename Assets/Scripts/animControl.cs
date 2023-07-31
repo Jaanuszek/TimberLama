@@ -9,9 +9,13 @@ public class animControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("left")|| Input.GetKeyDown("right"))
+        if (PauseScreen.isPaused == false)
         {
-            player.GetComponent<Animator>().Play("ruchSiekiera");
+            if (Input.GetKeyDown("left") || Input.GetKeyDown("right"))
+            {
+                player.GetComponent<Animator>().Play("ruchSiekiera");
+            }
         }
+       
     }
 }

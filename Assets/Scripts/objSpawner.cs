@@ -23,9 +23,12 @@ public class objSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("right")||Input.GetKeyDown("left"))
+        if (PauseScreen.isPaused == false)    
         {
-            SpawnObject();
+            if (Input.GetKeyDown("right") || Input.GetKeyDown("left"))
+            {
+                SpawnObject();
+            }
         }
     }
 }

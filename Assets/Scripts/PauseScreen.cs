@@ -7,8 +7,7 @@ public class PauseScreen : MonoBehaviour
 {
     public GameObject PauseScr;
     public GameOverScript GameOverManager;
-    private static bool isPaused = false;
-
+    public static bool isPaused = false;
 
     void Update()
     {
@@ -29,14 +28,14 @@ public class PauseScreen : MonoBehaviour
         PauseScr.SetActive(true);
         isPaused = true;
         Time.timeScale = 0f;
-        GameOverManager.ScoreText.gameObject.SetActive(false);
+       // GameOverManager.ScoreText.gameObject.SetActive(false);
     }
     public void Resume()
     {
         PauseScr.SetActive(false);
         isPaused = false;
-        Time.timeScale = 1f;
-        GameOverManager.ScoreText.gameObject.SetActive(true); //nie dziala :/
+        Time.timeScale = 4f;
+        //GameOverManager.ScoreText.gameObject.SetActive(true); //nie dziala :/
     }
     public void Exit()
     {
