@@ -15,7 +15,7 @@ public class spawnInARow : MonoBehaviour
         for (int i = 0; i<numberOfObjects; i++)
         {
             int randomNumber = Random.Range(0, objectToCreate.Length);
-            Instantiate(objectToCreate[randomNumber], position, Quaternion.identity);
+            Instantiate(objectToCreate[randomNumber], position, objectToCreate[randomNumber].transform.rotation);
             position.y += gap;
         }
     }

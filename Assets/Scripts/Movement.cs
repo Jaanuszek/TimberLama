@@ -23,6 +23,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log((Time.timeSinceLevelLoad)/4f);
         if (PauseScreen.isPaused == false)
         {
             if (Input.GetKeyDown("left"))

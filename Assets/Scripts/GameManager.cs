@@ -20,10 +20,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth > 0)
+        if (currentHealth > 0 && Time.timeSinceLevelLoad < 50f)
         {
             currentHealth -= 0.05f*Time.deltaTime;
             healthBar.UpdateHealthBar(maxHealth,currentHealth);
+        }
+        else if (currentHealth > 0 && Time.timeSinceLevelLoad < 100f)
+        {
+            currentHealth -= 0.1f * Time.deltaTime;
+            healthBar.UpdateHealthBar(maxHealth, currentHealth);
+        }
+        else
+        {
+            currentHealth -= 0.15f * Time.deltaTime;
+            healthBar.UpdateHealthBar(maxHealth, currentHealth);
         }
     }
 }
