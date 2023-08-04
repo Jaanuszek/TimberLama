@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Movement : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Movement : MonoBehaviour
     bool kierunek = false;
     public int Health;
     private int score = 0;
+    //private int highScore = 0;
     public GameOverScript GameOverScreen;
     private bool isDead;
     public GameManager GameManager;
@@ -43,6 +46,10 @@ public class Movement : MonoBehaviour
             {
                 isDead = true;
                 GameOverScreen.ScoreText.gameObject.SetActive(false);
+                if(score > PlayerPrefs.GetInt("HighScore",0))
+                {
+                    PlayerPrefs.SetInt("HighScore", score);
+                }
                 GameOverScreen.GameOver(score);
             }
         }
